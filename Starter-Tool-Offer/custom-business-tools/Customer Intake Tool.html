@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Intake Tool</title>
+
+<style>
+:root{
+  --cobalt:#155dfc;
+  --cobalt-dark:#0f3fb0;
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --border:#d1d5db;
+  --success:#166534;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.page{
+  max-width:1100px;
+  margin:0 auto;
+  padding:24px;
+}
+
+header{
+  background:var(--cobalt);
+  color:white;
+  padding:28px;
+  border-radius:18px;
+  margin-bottom:24px;
+}
+
+header h1{
+  margin:0 0 8px;
+  font-size:30px;
+}
+
+header p{
+  margin:0;
+  opacity:.92;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 10px 25px rgba(15,23,42,.06);
+}
+
+h2{
+  margin-top:0;
+}
+
+label{
+  display:block;
+  font-weight:700;
+  margin-top:14px;
+  margin-bottom:6px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  font-size:15px;
+}
+
+textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.button-row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+button{
+  border:none;
+  border-radius:10px;
+  padding:12px 16px;
+  font-weight:700;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.primary{
+  background:var(--cobalt);
+  color:white;
+}
+
+.primary:hover{
+  background:var(--cobalt-dark);
+}
+
+.secondary{
+  background:#e5e7eb;
+  color:#111827;
+}
+
+.summary-box{
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:16px;
+  min-height:420px;
+  white-space:pre-wrap;
+  line-height:1.6;
+}
+
+.note{
+  color:var(--muted);
+  font-size:14px;
+  margin-top:12px;
+}
+
+@media (max-width:800px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .page{
+    padding:14px;
+  }
+
+  header{
+    padding:22px;
+  }
+}
+
+@media print{
+
+  header,
+  .input-card,
+  .button-row,
+  .note{
+    display:none;
+  }
+
+  body{
+    background:white;
+  }
+
+  .card{
+    border:none;
+    box-shadow:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+<header>
+  <h1>Customer Intake Tool</h1>
+  <p>Capture customer information and generate a clean intake summary.</p>
+</header>
+
+<section class="grid">
+
+  <div class="card input-card">
+
+    <h2>Customer Information</h2>
+
+    <label>Customer Name</label>
+    <input id="customerName" type="text" placeholder="John Smith">
+
+    <label>Phone Number</label>
+    <input id="phoneNumber" type="text" placeholder="555-555-5555">
+
+    <label>Email Address</label>
+    <input id="emailAddress" type="email" placeholder="john@email.com">
+
+    <label>Service Needed</label>
+    <input id="serviceNeeded" type="text" placeholder="Fence Repair">
+
+    <label>Preferred Contact Method</label>
+    <select id="contactMethod">
+      <option>Phone</option>
+      <option>Email</option>
+      <option>Text Message</option>
+    </select>
+
+    <label>Project Details</label>
+    <textarea id="projectDetails" placeholder="Describe the customer's needs..."></textarea>
+
+    <div class="button-row">
+      <button class="primary" onclick="generateSummary()">
+        Create Intake Summary
+      </button>
+
+      <button class="secondary" onclick="clearForm()">
+        Clear
+      </button>
+
+      <button class="secondary" onclick="window.print()">
+        Print Summary
+      </button>
+    </div>
+
+    <p class="note">
+      Demo intake workflow for service businesses and customer-facing operations.
+    </p>
+
+  </div>
+
+  <div class="card">
+
+    <h2>Intake Summary</h2>
+
+    <div id="summaryOutput" class="summary-box">
+Complete the form and click Create Intake Summary.
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+<script>
+
+function generateSummary(){
+
+  const name =
+    document.getElementById('customerName').value.trim() ||
+    'Not Provided';
+
+  const phone =
+    document.getElementById('phoneNumber').value.trim() ||
+    'Not Provided';
+
+  const email =
+    document.getElementById('emailAddress').value.trim() ||
+    'Not Provided';
+
+  const service =
+    document.getElementById('serviceNeeded').value.trim() ||
+    'Not Provided';
+
+  const contact =
+    document.getElementById('contactMethod').value;
+
+  const details =
+    document.getElementById('projectDetails').value.trim() ||
+    'No project details supplied.';
+
+  document.getElementById('summaryOutput').textContent =
+
+`CUSTOMER INTAKE SUMMARY
+
+Customer Name:
+${name}
+
+Phone Number:
+${phone}
+
+Email Address:
+${email}
+
+Service Needed:
+${service}
+
+Preferred Contact Method:
+${contact}
+
+Project Details:
+${details}
+
+Generated:
+${new Date().toLocaleString()}`;
+}
+
+function clearForm(){
+
+  document.getElementById('customerName').value = '';
+  document.getElementById('phoneNumber').value = '';
+  document.getElementById('emailAddress').value = '';
+  document.getElementById('serviceNeeded').value = '';
+  document.getElementById('projectDetails').value = '';
+
+  document.getElementById('summaryOutput').textContent =
+    'Complete the form and click Create Intake Summary.';
+}
+
+</script>
+
+</body>
+</html>

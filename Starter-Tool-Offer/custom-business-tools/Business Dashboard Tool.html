@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Dashboard</title>
+
+<style>
+:root{
+  --cobalt:#155dfc;
+  --cobalt-dark:#0f3fb0;
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --border:#d1d5db;
+  --success:#166534;
+  --warning:#92400e;
+  --danger:#991b1b;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.page{
+  max-width:1100px;
+  margin:0 auto;
+  padding:24px;
+}
+
+header{
+  background:var(--cobalt);
+  color:white;
+  padding:28px;
+  border-radius:18px;
+  margin-bottom:24px;
+}
+
+header h1{
+  margin:0 0 8px;
+  font-size:30px;
+}
+
+header p{
+  margin:0;
+  opacity:.92;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 10px 25px rgba(15,23,42,.06);
+}
+
+h2{ margin-top:0; }
+
+label{
+  display:block;
+  font-weight:700;
+  margin-top:14px;
+  margin-bottom:6px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  font-size:15px;
+}
+
+.button-row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+button{
+  border:none;
+  border-radius:10px;
+  padding:12px 16px;
+  font-weight:700;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.primary{
+  background:var(--cobalt);
+  color:white;
+}
+
+.primary:hover{
+  background:var(--cobalt-dark);
+}
+
+.secondary{
+  background:#e5e7eb;
+  color:#111827;
+}
+
+.metrics{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.metric{
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:16px;
+}
+
+.metric span{
+  display:block;
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.metric strong{
+  font-size:24px;
+}
+
+.health-box{
+  margin-top:16px;
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:16px;
+  line-height:1.5;
+}
+
+.health-status{
+  font-size:26px;
+  font-weight:800;
+  margin-top:8px;
+}
+
+.good{ color:var(--success); }
+.ok{ color:var(--warning); }
+.bad{ color:var(--danger); }
+
+.note{
+  color:var(--muted);
+  font-size:14px;
+  margin-top:12px;
+}
+
+@media (max-width:800px){
+  .grid{ grid-template-columns:1fr; }
+  .metrics{ grid-template-columns:1fr; }
+  .page{ padding:14px; }
+  header{ padding:22px; }
+}
+
+@media print{
+  header,
+  .input-card,
+  .button-row,
+  .note{
+    display:none;
+  }
+
+  body{ background:white; }
+
+  .card{
+    border:none;
+    box-shadow:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+<header>
+  <h1>Business Dashboard</h1>
+  <p>Track simple business activity and turn raw numbers into useful insights.</p>
+</header>
+
+<section class="grid">
+
+  <div class="card input-card">
+    <h2>Business Activity</h2>
+
+    <label for="leads">Leads</label>
+    <input id="leads" type="number" min="0" value="40">
+
+    <label for="quotes">Quotes Sent</label>
+    <input id="quotes" type="number" min="0" value="25">
+
+    <label for="jobs">Jobs Booked</label>
+    <input id="jobs" type="number" min="0" value="12">
+
+    <label for="revenue">Revenue ($)</label>
+    <input id="revenue" type="number" min="0" value="9000">
+
+    <div class="button-row">
+      <button class="primary" onclick="updateDashboard()">Update Dashboard</button>
+      <button class="secondary" onclick="clearDashboard()">Clear</button>
+      <button class="secondary" onclick="window.print()">Print Dashboard</button>
+    </div>
+
+    <p class="note">
+      Demo dashboard for small business tracking and monthly performance review.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Dashboard Results</h2>
+
+    <div class="metrics">
+      <div class="metric">
+        <span>Lead Conversion</span>
+        <strong id="leadConversion">--</strong>
+      </div>
+
+      <div class="metric">
+        <span>Quote Conversion</span>
+        <strong id="quoteConversion">--</strong>
+      </div>
+
+      <div class="metric">
+        <span>Average Revenue / Job</span>
+        <strong id="avgRevenue">--</strong>
+      </div>
+
+      <div class="metric">
+        <span>Total Revenue</span>
+        <strong id="totalRevenue">--</strong>
+      </div>
+    </div>
+
+    <div class="health-box">
+      <strong>Business Health</strong>
+      <div id="businessHealth" class="health-status">--</div>
+      <div id="businessNote" class="note">Enter numbers to generate a status.</div>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<script>
+function getNumber(id){
+  return Number(document.getElementById(id).value) || 0;
+}
+
+function money(value){
+  return Number(value || 0).toLocaleString('en-US',{
+    style:'currency',
+    currency:'USD',
+    maximumFractionDigits:0
+  });
+}
+
+function percent(value){
+  if (!isFinite(value)) return '0%';
+  return `${value.toFixed(1)}%`;
+}
+
+function updateDashboard(){
+  const leads = getNumber('leads');
+  const quotes = getNumber('quotes');
+  const jobs = getNumber('jobs');
+  const revenue = getNumber('revenue');
+
+  const leadConversion = leads > 0 ? (quotes / leads) * 100 : 0;
+  const quoteConversion = quotes > 0 ? (jobs / quotes) * 100 : 0;
+  const avgRevenue = jobs > 0 ? revenue / jobs : 0;
+
+  document.getElementById('leadConversion').textContent = percent(leadConversion);
+  document.getElementById('quoteConversion').textContent = percent(quoteConversion);
+  document.getElementById('avgRevenue').textContent = money(avgRevenue);
+  document.getElementById('totalRevenue').textContent = money(revenue);
+
+  const health = document.getElementById('businessHealth');
+  const note = document.getElementById('businessNote');
+
+  health.className = 'health-status';
+
+  if (jobs === 0 || revenue === 0) {
+    health.textContent = 'NEEDS ATTENTION';
+    health.classList.add('bad');
+    note.textContent = 'The business has activity, but jobs or revenue are too low.';
+  } else if (quoteConversion >= 45 && leadConversion >= 50) {
+    health.textContent = 'GOOD';
+    health.classList.add('good');
+    note.textContent = 'Lead flow and quote conversion are moving in a healthy direction.';
+  } else if (quoteConversion >= 25) {
+    health.textContent = 'WATCH';
+    health.classList.add('ok');
+    note.textContent = 'Some jobs are being booked, but follow-up or quoting may need improvement.';
+  } else {
+    health.textContent = 'NEEDS ATTENTION';
+    health.classList.add('bad');
+    note.textContent = 'Conversion is low. This business may need better follow-up or sales tracking.';
+  }
+}
+
+function clearDashboard(){
+  document.getElementById('leads').value = '';
+  document.getElementById('quotes').value = '';
+  document.getElementById('jobs').value = '';
+  document.getElementById('revenue').value = '';
+
+  document.getElementById('leadConversion').textContent = '--';
+  document.getElementById('quoteConversion').textContent = '--';
+  document.getElementById('avgRevenue').textContent = '--';
+  document.getElementById('totalRevenue').textContent = '--';
+  document.getElementById('businessHealth').textContent = '--';
+  document.getElementById('businessHealth').className = 'health-status';
+  document.getElementById('businessNote').textContent = 'Enter numbers to generate a status.';
+}
+
+updateDashboard();
+</script>
+
+</body>
+</html>
