@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Custom Business Tools</title>
+
+<style>
+:root{
+  --cobalt:#155dfc;
+  --cobalt-dark:#0f3fb0;
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --border:#d1d5db;
+  --success:#166534;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.5;
+}
+
+.page{
+  max-width:1120px;
+  margin:0 auto;
+  padding:24px;
+}
+
+.hero{
+  background:var(--cobalt);
+  color:white;
+  padding:42px 28px;
+  border-radius:22px;
+  margin-bottom:24px;
+}
+
+.hero h1{
+  margin:0 0 12px;
+  font-size:38px;
+  line-height:1.1;
+}
+
+.hero p{
+  font-size:18px;
+  max-width:720px;
+  opacity:.94;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:18px;
+  background:white;
+  color:var(--cobalt);
+  padding:13px 18px;
+  border-radius:12px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.section{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:24px;
+  margin-bottom:20px;
+  box-shadow:0 10px 25px rgba(15,23,42,.06);
+}
+
+.section h2{
+  margin-top:0;
+  font-size:25px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.card{
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+}
+
+.card h3{
+  margin-top:0;
+}
+
+.tool-card {
+  margin-top: 24px;
+}
+
+.mobile-tools-card {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.mobile-tools-grid {
+  margin-top: 18px;
+}
+
+.mobile-tool {
+  overflow: hidden;
+}
+
+.mobile-tool h4 {
+  text-align: center;
+  margin: 8px 0 0;
+}
+
+.badge{
+  display:inline-block;
+  background:#dbeafe;
+  color:#1e3a8a;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+.price{
+  font-size:34px;
+  font-weight:900;
+  color:var(--success);
+  margin:8px 0;
+}
+
+ul{
+  padding-left:20px;
+}
+
+li{
+  margin-bottom:8px;
+}
+
+.cta{
+  text-align:center;
+  background:#111827;
+  color:white;
+}
+
+.cta a{
+  color:white;
+  font-weight:900;
+}
+
+.footer{
+  color:var(--muted);
+  text-align:center;
+  font-size:14px;
+  padding:20px;
+}
+
+.tool-card img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+
+.mobile-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.mobile-tool {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.mobile-tool img {
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  object-position: top;
+  display: block;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  background: #f5f7fb;
+}
+
+@media(max-width:850px){
+  .mobile-tools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mobile-tool img {
+    height: 420px;
+  }
+}
+
+@media(max-width:850px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .page{
+    padding:14px;
+  }
+
+  .hero{
+    padding:30px 22px;
+  }
+
+  .hero h1{
+    font-size:30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+<section class="hero">
+  <div class="badge">Starter Tool Build</div>
+  <h1>Custom AI-Assisted Business Tools for Small Businesses</h1>
+  <p>
+    Simple dashboards, calculators, intake forms, and workflow tools built to help small businesses save time, organize work, and make better decisions.
+  </p>
+  <a class="btn" href="mailto:mikeguidesblog@gmail.com?subject=Starter%20Tool%20Build%20Request">
+  Request a Starter Tool
+</a>
+</section>
+
+<section class="section">
+  <h2>The Offer</h2>
+  <p>
+    I build one simple custom web-based business tool designed around one workflow in your business.
+  </p>
+
+  <div class="price">$500</div>
+  <p><strong>Typical Delivery:</strong> 3–7 business days</p>
+
+  <ul>
+    <li>1 custom web-based tool</li>
+    <li>Mobile-friendly design</li>
+    <li>Simple instructions</li>
+    <li>1 revision</li>
+    <li>Delivered as a shareable page or file</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2>Example Tools</h2>
+
+  <div class="tool-card">
+    <img src="images/Quote-Calculator-v1.png" alt="Quote Calculator">
+    <h3>Quote Calculator</h3>
+    <p>A simple calculator that helps service businesses create quick customer quotes.</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="images/Customer-Intake-Tool-v1.png" alt="Customer Intake Tool">
+    <h3>Customer Intake Tool</h3>
+    <p>A clean form-style tool for capturing customer details and project needs.</p>
+  </div>
+
+  <div class="tool-card">
+    <img src="images/Business-Dashboard-v1.png" alt="Business Dashboard">
+    <h3>Business Dashboard</h3>
+    <p>A simple dashboard view for tracking business activity, status, and progress.</p>
+  </div>
+
+  <div class="mobile-tools-card">
+  <h3>Mobile-Friendly Examples</h3>
+  <p>Every starter tool is designed to work on desktop, tablet, and mobile devices.</p>
+
+  <div class="mobile-tools-grid">
+
+    <div class="mobile-tool">
+      <img src="images/Quote-Calculator-Mobile1a.png" alt="Quote Calculator Mobile Top View">
+      <img src="images/Quote-Calculator-Mobile1b.png" alt="Quote Calculator Mobile Bottom View">
+      <h4>Quote Calculator</h4>
+    </div>
+
+    <div class="mobile-tool">
+      <img src="images/Customer-Intake-Mobile1a.png" alt="Customer Intake Mobile Top View">
+      <img src="images/Customer-Intake-Mobile1b.png" alt="Customer Intake Mobile Bottom View">
+      <h4>Customer Intake Tool</h4>
+    </div>
+
+    <div class="mobile-tool">
+      <img src="images/Business-Dashboard-Mobile.png" alt="Business Dashboard Mobile View">
+      <h4>Business Dashboard</h4>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<section class="section">
+  <h2>How It Works</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>1. Pick a Workflow</h3>
+      <p>
+        We choose one business task that could be easier, faster, or better organized.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>2. Build the Tool</h3>
+      <p>
+        I create a simple custom tool using clean design and practical business logic.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>3. Deliver and Review</h3>
+      <p>
+        You receive the finished tool, simple instructions, and one revision if needed.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Good Fit For</h2>
+
+  <ul>
+    <li>Small service businesses</li>
+    <li>Contractors and trades</li>
+    <li>Lawn care and property services</li>
+    <li>Cleaners, painters, repair businesses, and local operators</li>
+    <li>Business owners who need a practical tool without a complicated software system</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2>Example Requests</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Quote Calculators</h3>
+      <p>Create fast, consistent estimates for customers.</p>
+    </div>
+
+    <div class="card">
+      <h3>Customer Intake Forms</h3>
+      <p>Collect customer information and project details.</p>
+    </div>
+
+    <div class="card">
+      <h3>Business Dashboards</h3>
+      <p>Track metrics, projects, leads, and daily activity.</p>
+    </div>
+
+    <div class="card">
+      <h3>Lead Trackers</h3>
+      <p>Organize inquiries and follow-up opportunities.</p>
+    </div>
+
+    <div class="card">
+      <h3>Job Estimators</h3>
+      <p>Calculate labor, materials, and pricing.</p>
+    </div>
+
+    <div class="card">
+      <h3>Custom Workflows</h3>
+      <p>Tools built around the way your business actually operates.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section cta">
+  <h2>Need a simple tool for your business?</h2>
+  <p>
+    Email me and tell me what workflow you want to make easier.
+  </p>
+    <p>
+  <a href="mailto:mikeguidesblog@gmail.com?subject=Starter%20Tool%20Build%20Request">
+    mikeguidesblog@gmail.com
+  </a>
+</p>
+</section>
+
+<div class="footer">
+  Custom business tools built with AI-assisted development.
+</div>
+
+</main>
+
+</body>
+</html>
